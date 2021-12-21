@@ -1,0 +1,94 @@
+
+<!-- Header navbar -->
+<header class="header">
+    <div class="grid">
+        <nav class="header__navbar">
+            <ul class="header__navbar__list">
+                <li class="header_navbar-item header_navbar-item--has-notify">
+                    <a href="#" class="header__navbar-item-link">
+                        <i class="header__navbar-icon fas fa-bell"></i>
+                        Thông báo
+                    </a>
+                    <div class="header__notify">
+                        <header class="header__notify-header">
+                            <h3>Thông báo mới nhận</h3>
+                        </header>
+                        <footer class="header__notify-footer">
+                            <a href="#" class="header__notify-footer-btn">Xem tất cả</a>
+                        </footer>
+                    </div>
+                </li>
+                <li class="header_navbar-item">
+                    <a href="#" class="header__navbar-item-link">
+                        <i class="header__navbar-icon fas fa-question-circle"></i>
+                        Trợ giúp
+                    </a>
+                </li>
+                    <li class="header_navbar-item header_navbar-item--strong header_navbar-item--separate">
+                        <a href="#" data-toggle="modal" data-target="#RegisterModal" class="header__search-switch-link--a">
+                          <i class="header__navbar-icon fas fa-user"></i>
+                          Đăng ký
+                           </a>                           
+                    </li>
+                    <li class="header_navbar-item header_navbar-item--strong">
+                        <a href="#" data-toggle="modal" data-target="#LoginModal" class="header__search-switch-link--a">
+                          <i class="header__navbar-icon fas fa-sign-in-alt "></i>
+                          Đăng nhập
+                           </a>                           
+                    </li>
+            </ul>
+        </nav>
+
+        <!-- Header with search -->
+        <div class="header-with-search">
+            <div class="header__search-switch" title="Trang chủ">
+                <a href="{{ url_for('home') }}" class="header__search-switch-link">
+                    <i class="header__search-switch-icon fas fa-home"></i>
+                    Huế Shop
+                </a>
+            </div>
+            <div style="height: 43px;">
+                <ul id="nav">
+                   <li>
+                        <a href="#">
+                            <i class="fas fa fa-mobile"></i>
+                            Thể loại
+                            <i class="fas fa fa-angle-down"></i>
+                        </a>
+                        <ul class="subnav">
+                            {% for category in categories %}
+                            <li><a class="dropdown-item" href="{{ url_for('get_category', id=category.id) }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                     </li>
+                    <li>
+                        <a href="#">
+                        <i class="fas fa fa-laptop"></i>
+                        Nhãn hiệu
+                        <i class="fas fa fa-angle-down"></i>
+                        </a>
+                        <ul class="subnav">
+                            {% for brand in brands %}
+                                <li><a class="dropdown-item" href="{{ url_for('get_brand', id=brand.id) }}">{{ brand.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                     </li>
+              </ul>
+        </div>   
+            <form action="{{ url_for('search') }}" method="GET" class="header__search" title="Tìm kiếm">       
+                     <input name="key" type="text" class="header__search-input" placeholder="Tìm kiếm">
+                     <button value="key" class="header__search-btn" type="submit">
+                      <i class="header__search-btn-icon fas fa-search"></i>
+                      </button>    
+            </form>
+            <div class="header__search-switch" title="Giỏ hàng">
+                <a href="#" class="header__search-switch-link">
+                    <i class="header__search-switch-icon fas fa fa-cart-plus"></i>
+                </a>
+            </div>
+            
+        </div>
+                            
+    </div>
+    
+</header>

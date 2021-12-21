@@ -1,0 +1,45 @@
+{% extends "admin/layoutAdd.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            {% from "_formhelpers.html" import render_field %}
+                            {% include '_messages.html' %}
+                            <h1 class="h4 text-gray-900 mb-4">Register!!!</h1>
+                        </div>  
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ render_field(form.name, class="form-control form-control-user", placeholder="First Name") }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ render_field(form.username, class="form-control form-control-user", placeholder="Last Name") }}
+                                </div>
+                            </div>                                                    
+                            <div class="form-group">
+                                {{ render_field(form.email, class="form-control form-control-user", placeholder="Email Address") }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.password, class="form-control form-control-user", placeholder="Password") }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.confirm, class="form-control form-control-user", placeholder="Confirm Password") }}
+                            </div>
+                            <div class="center-button">
+                                <button type="submit" class="btn btn-primary" style="margin: 10px;">Register</button>
+                                <a href="{{ url_for('login') }}" class="btn btn-primary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

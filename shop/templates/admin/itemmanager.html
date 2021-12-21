@@ -1,0 +1,123 @@
+{% extends 'admin/layoutManager.html' %}
+{% block content %}
+{% include 'admin/navbar.html' %}
+
+              <!-- Begin Page Content -->
+              <div class="container-fluid">
+
+                <!-- Page Heading -->
+                {% if name_manager %}
+                <h1 class="h3 mb-2 text-gray-800">{{ name_manager }}</h1>
+                {% else %}
+                <title>Category</title>
+                {% endif %}
+                
+
+                  <!-- DataTales Example -->
+                  <div class="card shadow mb-4">
+                      <div class="card-header py-3">                         
+                          {% if name_list %}
+                          <h6 class="m-0 font-weight-bold text-primary">{{ name_list }}</h6>
+                          {% else %}
+                          <h6 class="m-0 font-weight-bold text-primary">List of categories</h6>
+                          {% endif %}
+                          {% from "_formhelpers.html" import render_field %}
+                          {% include '_messages.html' %}
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                  <thead>
+                                      <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% if brands %}
+                                     {% for brand in brands %}
+                                     <tr>
+                                       <td>{{ loop.index }}</td>
+                                       <td>{{ brand.name }}</td>
+                                       <td><a href="{{ url_for('updatebrand', id=brand.id) }}" class="btn btn-sm btn-info"><i class="fas fa-fw fa-wrench"></i></a></td>
+                                       <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{ brand.id }}">
+                                        <i class="fas fa-trash"></i>
+                                       </button></td>
+                                     </tr>
+                           
+                                    <!--============= MODEL ===================-->
+                                    
+                                    <div class="modal fade" id="exampleModal-{{ brand.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ brand.name }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <p class="text-danger">Are you Sure that you want to delete this brand ({{ brand.name }}) </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <form action="{{ url_for('deletebrand',id=brand.id) }}" method="post">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                            
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!--==============MODEL ===================-->
+                           
+                                     {% endfor %}
+                                     {% else %}
+                                     {% for category in categories %}
+                                     <tr>
+                                       <td>{{loop.index}}</td>
+                                       <td>{{ category.name }}</td>
+                                       <td> <a href="{{ url_for('updatecat', id=category.id) }}" class="btn btn-sm btn-info"><i class="fas fa-fw fa-wrench"></i> </a></td>
+                                       <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{ category.id }}">
+                                        <i class="fas fa-trash"></i>
+                                       </button></td>
+                                     </tr>
+                                    <!--============= MODEL ===================-->
+                                            <div class="modal fade" id="exampleModal-{{ category.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ category.name }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="text-danger">Are you Sure that you want to delete this Category ({{ category.name }}) </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <form action="{{url_for('deletecat',id=category.id)}}" method="post">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                    
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                    <!--==============MODEL ===================-->
+                           
+                                     {% endfor %}
+                                     {% endif %}
+                                   </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.container-fluid -->
+{% include 'admin/footer.html' %}
+{% endblock content %}

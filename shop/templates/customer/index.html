@@ -1,0 +1,188 @@
+{% extends 'customer/layout.html' %}
+{% block content %}
+{% include 'customer/navbar.html' %}
+
+<!-- Container -->
+<div class="container">
+    <div class="grid">
+        <div class="grid__row">
+            <div class="grid__column-12">
+                <div class="home-product">
+                    <div class="grid__row">
+                        {% if get_brand_prod %}
+                        {% for br in get_brand_prod %}
+                        <div class="grid__column-4">
+                            <div class="home-product-item">
+                                <div class="home-product-item_img" style="background-image: url( {{ url_for('static',filename='images/' + br.image_1) }} );"></div>
+                                <h4 class="home-product-item_name">{{ br.name }}</h4>
+                                <div class="home-product-item_price">
+                                    <span class="home-product-item_price-old">{{ br.price }}$</span>
+                                    <span class="home-product-item_price-current">{{ br.price - (br.price*br.discount/100) }}$</span>
+                                </div>
+                                
+                                <div class="home-product-item_sale-off">
+                                    <span class="home-product-item_percent">Price {{ br.discount }}%</span>
+                                </div>
+                                <div class="home-product-item_action">
+                                    <a href="#" class="home-product-item_action-btn">
+                                        <i class="fas fa fa-cart-plus"></i>
+                                    </a>
+                                    <a href="#" class="home-product-item_action-btn" data-toggle="modal" data-target="#ReviewModal-{{ br.id }}">
+                                        <i class="fas fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Model Review -->
+                            <div class="modal fade show" id="ReviewModal-{{ br.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content" style="width: 125%;">
+                                        <div class="auth-content">
+                                            <div class="auth-form__container" style="padding: 15px;">
+                                                <div class="auth-form__header" style="justify-content: center;">
+                                                    <img alt="{{ br.name }}" src="{{ url_for('static',filename='images/' + br.image_1) }}" width="256"></c:when>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 mt-3" style="display: flex; justify-content: center;">
+                                                        <img src="{{ url_for('static',filename='images/' + br.image_2) }}" alt="{{ br.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + br.image_3) }}" alt="{{ br.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + br.image_1) }}" alt="{{ br.name }}" width="100">
+                                                    </div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mota" class="auth-form__lable" style="font-size: 1.8rem;">Description<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ br.desc }}</div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mausac" class="auth-form__lable" style="font-size: 1.8rem;">Colors<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ br.colors }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- End Model Review -->
+                        {% endfor %}
+
+                        {% elif get_cat_prod %} 
+                        {% for cat in get_cat_prod %}
+                        <div class="grid__column-4">
+                            <div class="home-product-item">
+                                <div class="home-product-item_img" style="background-image: url( {{ url_for('static',filename='images/' + cat.image_1) }} );"></div>
+                                <h4 class="home-product-item_name">{{ cat.name }}</h4>
+                                <div class="home-product-item_price">
+                                    <span class="home-product-item_price-old">{{ cat.price }}$</span>
+                                    <span class="home-product-item_price-current">{{ cat.price - (cat.price*cat.discount/100) }}$</span>
+                                </div>
+                                
+                                <div class="home-product-item_sale-off">
+                                    <span class="home-product-item_percent">Price {{ cat.discount }}%</span>
+                                </div>
+                                <div class="home-product-item_action">
+                                    <a href="#" class="home-product-item_action-btn">
+                                        <i class="fas fa fa-cart-plus"></i>
+                                    </a>
+                                    <a href="#" class="home-product-item_action-btn" data-toggle="modal" data-target="#ReviewModal-{{ cat.id }}">
+                                        <i class="fas fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Model Review -->
+                            <div class="modal fade show" id="ReviewModal-{{ cat.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content" style="width: 125%;">
+                                        <div class="auth-content">
+                                            <div class="auth-form__container" style="padding: 15px;">
+                                                <div class="auth-form__header" style="justify-content: center;">
+                                                    <img alt="{{ cat.name }}" src="{{ url_for('static',filename='images/' + cat.image_1) }}" width="256"></c:when>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 mt-3" style="display: flex; justify-content: center;">
+                                                        <img src="{{ url_for('static',filename='images/' + cat.image_2) }}" alt="{{ cat.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + cat.image_3) }}" alt="{{ cat.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + cat.image_1) }}" alt="{{ cat.name }}" width="100">
+                                                    </div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mota" class="auth-form__lable" style="font-size: 1.8rem;">Description<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ cat.desc }}</div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mausac" class="auth-form__lable" style="font-size: 1.8rem;">Colors<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ cat.colors }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- End Model Review -->
+                        {% endfor %}
+
+                        {% else %}
+                        {% for product in products %}
+                        <div class="grid__column-4">
+                            <div class="home-product-item">
+                                <div class="home-product-item_img" style="background-image: url( {{ url_for('static',filename='images/' + product.image_1) }} );"></div>
+                                <h4 class="home-product-item_name">{{ product.name }}</h4>
+                                <div class="home-product-item_price">
+                                    <span class="home-product-item_price-old">{{ product.price }}$</span>
+                                    <span class="home-product-item_price-current">{{ product.price - (product.price*product.discount/100) }}$</span>
+                                </div>
+                                
+                                <div class="home-product-item_sale-off">
+                                    <span class="home-product-item_percent">Price {{ product.discount }}%</span>
+                                </div>
+                                <div class="home-product-item_action">
+                                    <a href="#" class="home-product-item_action-btn">
+                                        <i class="fas fa fa-cart-plus"></i>
+                                    </a>
+                                    <a href="#" class="home-product-item_action-btn" data-toggle="modal" data-target="#ReviewModal-{{ product.id }}">
+                                        <i class="fas fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Model Review -->
+                            <div class="modal fade show" id="ReviewModal-{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content" style="width: 125%;">
+                                        <div class="auth-content">
+                                            <div class="auth-form__container" style="padding: 15px;">
+                                                <div class="auth-form__header" style="justify-content: center;">
+                                                    <img alt="{{ product.name }}" src="{{ url_for('static',filename='images/' + product.image_1) }}" width="256"></c:when>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 mt-3" style="display: flex; justify-content: center;">
+                                                        <img src="{{ url_for('static',filename='images/' + product.image_2) }}" alt="{{ product.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + product.image_3) }}" alt="{{ product.name }}" width="100">
+                                                        <img src="{{ url_for('static',filename='images/' + product.image_1) }}" alt="{{ product.name }}" width="100">
+                                                    </div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mota" class="auth-form__lable" style="font-size: 1.8rem;">Description<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ product.desc }}</div>
+                                                </div>
+                                                <div class="auth-form__form">
+                                                    <label for="mausac" class="auth-form__lable" style="font-size: 1.8rem;">Colors<br></label>
+                                                    <div style="font-size: 1.4rem;">{{ product.colors }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- End Model Review -->
+                        {% endfor %}    
+                    {% endif %}                                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% include 'customer/footer.html' %}
+{% endblock content %}

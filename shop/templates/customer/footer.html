@@ -1,0 +1,161 @@
+<!-- End container -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+       <div class="copyright text-center my-auto">
+          <span style="font-size: 1.6rem;">Nhóm 9- Phần mềm mã nguồn mở - 2021-2022.1.TIN4063.001</span><br>
+          <span style="font-size: 1.6rem;">Nguyễn Hữu Hiệp - 18T1021093</span><br>
+          <span style="font-size: 1.6rem;">Thái Nhựt Tài - 18T1021273</span><br>
+          <span style="font-size: 1.6rem;">Trần Văn Hoàng - 18T1021108</span><br>
+          <span style="font-size: 1.6rem;">Nguyễn Xuân Quân - 18T1021256</span><br>
+       </div>
+    </div>
+</footer>
+<!-- Modal layout-->
+<!-- Register Modal-->
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Register form -->
+    <div class="auth-form ">
+        <div class="auth-form__container">
+            <div class="auth-form__header">
+                <span class="auth-form__switch-btn">Đăng ký</span>
+            </div>
+            <form action="RegisterKH" method="post">
+                <div class="auth-form__form">
+                    <div class="auth-form__group">
+                        <label for="name" class="auth-form__lable">Họ và tên</label>
+                        <input name="txtHoten" type="text" class="auth-form__input" placeholder="Vui lòng nhập họ và tên chính xác">
+                    </div>
+                    
+                    <div class="auth-form__group-form">
+                        <div class="auth-form__group">
+                            <label for="birthday">Ngày sinh</label>
+                            <input type="date" class="auth-form__input">
+                        </div>
+                        <div class="auth-form__group ml8">
+                            <label for="Giới tính" class="auth-form__lable">Giới tính</label>
+                            <select name="txtGT" class="auth-form__input">
+                                <option value="">Chọn giới tính</option>
+                                <option>Nam</option>
+                                <option>Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__group">
+                        <label for="address" class="auth-form__lable">Địa chỉ</label>
+                        <input type="text" class="auth-form__input" placeholder="Vui lòng nhập địa chỉ chính xác">
+                    </div>
+
+                    <div class="auth-form__group">
+                        <label for="mobile" class="auth-form__lable">Số điện thoại</label>
+                        <input name="txtDT" type="text" class="auth-form__input" placeholder="Vui lòng nhập số điện thoại chính xác">
+                    </div>
+
+                    <div class="auth-form__group">
+                        <label for="user" class="auth-form__lable">Tên đăng nhập</label>
+                        <input name="txtEmail" type="text" class="auth-form__input" placeholder="Nhập tên tài khoản của quý khách">
+                    </div>
+
+                    <div class="auth-form__group-form">
+                        <div class="auth-form__group">
+                            <label for="password" class="auth-form__label">Mật khẩu</label>
+                            <input name="txtMatKhau" type="password" class="auth-form__input" placeholder="Vui lòng nhập mật khẩu">
+                         </div>
+                    
+                        <div class="auth-form__group ml8">
+                            <label for="confirmation-password" class="auth-form__label">Xác nhận lại mật khẩu</label>
+                            <input name="txtConfir" type="password" class="auth-form__input" placeholder="Vui lòng nhập lại mật khẩu">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auth-form__aside">
+                    <p class="auth-form__policy-text">
+                        Bằng việc đăng ký, bạn đã đồng ý với HuếRoom về
+                        <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                        <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                    </p>
+                </div>
+
+                <div class="auth-form__controls">
+                    <button class="btn auth-form__btn btn--normal auth-form__control-back" data-dismiss="modal">HỦY</button>
+                    <button type="submit"  class="btn auth-form__btn--primary">ĐĂNG KÝ</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-form__socials">
+            <a href="" class="auth-form__socials-icon auth-form__socials--facebook btn btn--size-s btn--with-icon">
+                <i class="fab fa-facebook-square"></i>
+                <span class="auth-form__socials-title">Kết nối qua Facebook</span>
+                
+            </a>
+            <a href="" class="auth-form__socials-icon auth-form__socials--google btn btn--size-s btn--with-icon">
+                <i class="fab fa-google-plus-square"></i>
+                <span class="auth-form__socials-title">Kết nối qua Google Plus</span>
+            </a>
+        </div>
+    </div>
+   </div>
+</div>
+</div>
+<!-- Login model -->
+<!-- Register Modal-->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+      <!--Login form-->
+<div class="modal__body modal__body-login">
+    <div class="auth-form">
+        <div class="auth-form__container">
+            <div class="auth-form__header">
+                <span class="auth-form__switch-btn">Đăng nhập</span>
+            </div>
+            <form action="LoginUser" method="post">
+                <div class="auth-form__form">                                                                                                   
+                    <div class="auth-form__group">
+                        <label for="user" class="auth-form__lable">Tên đăng nhập</label>
+                        <input name="txtEmail" type="text" class="auth-form__input" placeholder="Tên tài khoản của quý khách">
+                    </div>
+
+                    <div class="auth-form__group">
+                        <label for="password" class="auth-form__label">Mật khẩu</label>
+                        <input name="txtPass" type="password" class="auth-form__input" placeholder="Mật khẩu của quý khách">
+                    </div>
+
+                    <div class="auth-form__help">
+                        <a href="" class="auth-form__help-link">Quên mật khẩu?</a>
+                    </div>
+                </div>
+
+                <div class="auth-form__controls">
+                    <button class="btn auth-form__btn btn--normal auth-form__control-back" data-dismiss="modal">HỦY</button>
+                    <button type="submit" class="btn auth-form__btn--primary">ĐĂNG NHẬP</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="auth-form__socials">
+            <a href="" class="auth-form__socials-icon auth-form__socials--facebook btn btn--size-s btn--with-icon">
+                <i class="fab fa-facebook-square"></i>
+                <span class="auth-form__socials-title">Đăng nhập bằng Facebook</span>
+            </a>
+            <a href="" class="auth-form__socials-icon auth-form__socials--google btn btn--size-s btn--with-icon">
+                <i class="fab fa-google-plus-square"></i>
+                <span class="auth-form__socials-title">Đăng nhập bằng Google Plus</span>
+            </a>
+        </div>
+
+        <div class="auth-form__alert-register-field">
+            Quý khách chưa có tài khoản
+            <a href="#" class="auth-form__alert-register-field-link" data-dismiss="modal" data-toggle="modal" data-target="#RegisterModal">Đăng ký ngay</a>
+        </div>
+
+        </div>
+    </div>
+   </div>
+</div>

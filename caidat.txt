@@ -1,0 +1,14 @@
+bcrypt
+email-validator
+Flask
+Flask-Bcrypt
+Flask-Login
+Flask-Migrate
+flask-msearch
+Flask-SQLAlchemy
+Flask-Uploads
+Flask-WTF
+mysqlclient
+SQLAlchemy
+Werkzeug
+WTForms

@@ -1,0 +1,79 @@
+{% extends "admin/layoutAdd.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Add a Product!!!</h1>
+                        </div>
+                        {% from "_formhelpers.html" import render_field %}
+                        {% include '_messages.html' %}
+                        <form action="" method="POST" enctype="multipart/form-data">                                                    
+                            <div class="form-group">
+                                {{ render_field(form.name, class="form-control form-control-user", placeholder="Add product name") }}
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ render_field(form.price, class="form-control form-control-user", placeholder="Add product price ($)") }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ render_field(form.discount, class="form-control form-control-user", placeholder="Add product discount (%)") }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select name="brand" id="brand" class="form-control form-control-user">
+                                        <option value="">Select a brand</option>
+                                        {% for brand in brands %}
+                                        <option value="{{brand.id}}">{{ brand.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select name="category" id="category" class="form-control">
+                                        <option value="">Select a category </option>
+                                        {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>                                  
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ render_field(form.colors, class="form-control form-control-user", placeholder="Add product colors") }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ render_field(form.stock, class="form-control form-control-user", placeholder="Add product stock") }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.discription, class="form-control", placeholder="Add product detail", rows="5") }}
+                            </div>
+                            <div class="form-group row">
+                                <div class="row">
+                                    <div class="col-md-4">{{ render_field(form.image_1, class="form-control") }}</div>
+                                    <div class="col-md-4">{{ render_field(form.image_2, class="form-control") }}</div>
+                                    <div class="col-md-4">{{ render_field(form.image_3, class="form-control") }}</div>
+                                </div>
+                            </div>
+
+                            <div class="center-button">
+                                <button name="btnAdd" type="submit" class="btn btn-primary" style="margin: 0px 10px;">Add product</button>
+                                <a href="{{ url_for('admin') }}" class="btn btn-primary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
